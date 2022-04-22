@@ -20,12 +20,12 @@ buttons.forEach(button => {
         try {
             if (button.textContent === "=" && acceptInput) {
                 if (screen.textContent.includes("/0")) {
-                    screen.textContent = "Error, Reset"
+                    screen.textContent = "Error, Restart"
                 }
                 screen.textContent = eval(screen.textContent)
             }
         } catch (error) {
-            screen.textContent = "Error, Reset"
+            screen.textContent = "Error, Restart"
             acceptInput = false
             setTimeout(function () {
                 acceptInput = true
