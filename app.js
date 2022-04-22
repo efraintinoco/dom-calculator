@@ -1,36 +1,36 @@
 const screen = document.querySelector("#screen")
 const buttons = document.querySelectorAll("span")
 const clear = document.querySelector("#clear")
-let acceptingInput = true
+let acceptInput = true
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-        if (button.textContent == "÷" && acceptingInput) {
+        if (button.textContent == "÷") {
             screen.textContent += "/"
         }
-        if (button.textContent == "x" && acceptingInput) {
+        if (button.textContent == "x" && acceptInput) {
             screen.textContent += "*"
         }
-        if (button.textContent === "C" && acceptingInput) {
+        if (button.textContent === "C" && acceptInput) {
             screen.textContent = ""
         }
-        if (button.textContent !== "÷" && button.textContent !== "=" && button.textContent !== "x" && button.textContent !== "C" && acceptingInput) {
+        if (button.textContent !== "÷" && button.textContent !== "=" && button.textContent !== "x" && button.textContent !== "C" && acceptInput) {
             screen.textContent += button.textContent
         }
         try {
-            if (button.textContent === "=" && acceptingInput) {
+            if (button.textContent === "=" && acceptInput) {
                 if (screen.textContent.includes("/0")) {
-                    screen.textContent = "Error, Resetting"
+                    screen.textContent = "Error, Reset"
                 }
                 screen.textContent = eval(screen.textContent)
             }
         } catch (error) {
-            screen.textContent = "Error, Resetting"
-            acceptingInput = false
-            setTimeout(function() {
-                acceptingInput = true
+            screen.textContent = "Error, Reset"
+            acceptInput = false
+            setTimeout(function () {
+                acceptInput = true
                 screen.textContent = ""
-            }, 1800)
+            }, 2500)
         }
     })
 })
